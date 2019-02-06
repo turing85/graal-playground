@@ -3,10 +3,13 @@ package de.consol.dus.graal.numbercruncing.fibonacci;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 
 @BenchmarkMode(Mode.SingleShotTime)
@@ -16,10 +19,16 @@ import org.openjdk.jmh.annotations.Warmup;
 @State(Scope.Benchmark)
 public abstract class FibonacciJMH {
 
-  private final Fibonacci fibonacci;
+  private Fibonacci fibonacci;
 
-  FibonacciJMH() {
-    this.fibonacci = getFreshInstance();
+  @Setup(Level.Iteration)
+  public final void setup() {
+    fibonacci = getFreshInstance();
+  }
+
+  @TearDown(Level.Iteration)
+  public void tearDown() {
+    fibonacci = null;
   }
 
   abstract protected Fibonacci getFreshInstance();

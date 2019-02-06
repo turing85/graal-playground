@@ -25,10 +25,10 @@ public abstract class SortJMH {
   @TearDown(Level.Iteration)
   public abstract void tearDown();
 
+  public abstract void sort();
+
   @Benchmark
   public final void execute() {
     sort();
   }
-
-  public abstract void sort();
 }
