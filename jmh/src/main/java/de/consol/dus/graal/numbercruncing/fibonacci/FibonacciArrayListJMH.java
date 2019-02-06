@@ -4,7 +4,7 @@ import org.openjdk.jmh.annotations.Param;
 
 public class FibonacciArrayListJMH extends FibonacciJMH {
 
-  @Param("268435456")
+  @Param("8388608")
   private int n = 0;
 
   @Override

@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>dus.graal.core</artifactId>
+  <artifactId>dus.graal.benchmarks</artifactId>
 
   <properties>
     <junit.version>5.3.2</junit.version>

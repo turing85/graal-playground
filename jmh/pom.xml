@@ -18,7 +18,7 @@
   <dependencies>
     <dependency>
       <groupId>de.consol</groupId>
-      <artifactId>dus.graal.core</artifactId>
+      <artifactId>dus.graal.benchmarks</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
