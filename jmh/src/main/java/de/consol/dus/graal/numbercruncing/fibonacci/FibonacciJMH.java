@@ -16,22 +16,18 @@ import org.openjdk.jmh.annotations.Warmup;
 @State(Scope.Benchmark)
 public abstract class FibonacciJMH {
 
-  private Fibonacci fibonacci;
+  private final Fibonacci fibonacci;
 
   FibonacciJMH() {
-    init();
+    this.fibonacci = getFreshInstance();
   }
 
-  abstract protected void init();
-
-  public Fibonacci getFibonacci() {
-    return fibonacci;
-  }
+  abstract protected Fibonacci getFreshInstance();
 
   public abstract int getN();
 
-  public void setFibonacci(Fibonacci fibonacci) {
-    this.fibonacci = fibonacci;
+  public final Fibonacci getFibonacci() {
+    return fibonacci;
   }
 
   @Benchmark

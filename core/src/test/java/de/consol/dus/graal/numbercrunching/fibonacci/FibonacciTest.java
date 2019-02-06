@@ -12,14 +12,22 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 @DisplayName("Test for Fibonacci calculation")
 public abstract class FibonacciTest {
 
-  Fibonacci underTest;
+  private Fibonacci underTest;
 
   @BeforeEach
   final void setup() {
-    init();
+    this.underTest = getFreshInstance();
   }
 
-  protected abstract void init();
+  protected abstract Fibonacci getFreshInstance();
+
+  protected void setUnderTest(Fibonacci underTest) {
+    this.underTest = underTest;
+  }
+
+  public Fibonacci getUnderTest() {
+    return underTest;
+  }
 
   @Nested
   @DisplayName("Sanity test")
@@ -31,7 +39,7 @@ public abstract class FibonacciTest {
       // Given: nothing
 
       // When:
-      long actual = underTest.calculateNthFibonacci(nth);
+      long actual = getUnderTest().calculateNthFibonacci(nth);
 
       // Then:
       assertEquals(expected, actual);

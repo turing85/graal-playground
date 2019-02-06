@@ -5,7 +5,7 @@ import de.consol.dus.graal.numbercruncing.fibonacci.FibonacciArray;
 public class FibonacciArrayTest extends FibonacciTest {
 
   @Override
-  protected void init() {
-    underTest = new FibonacciArray();
+  protected FibonacciArray getFreshInstance() {
+    return new FibonacciArray();
   }
 }

@@ -4,7 +4,7 @@ import de.consol.dus.graal.numbercruncing.fibonacci.FibonacciRecursive;
 
 public class FibonacciRecursiveTest extends FibonacciTest {
   @Override
-  protected void init() {
-    underTest = new FibonacciRecursive();
+  protected FibonacciRecursive getFreshInstance() {
+    return new FibonacciRecursive();
   }
 }

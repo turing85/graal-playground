@@ -8,8 +8,8 @@ public class FibonacciIterativeJMH extends FibonacciJMH {
   private int n = 0;
 
   @Override
-  protected void init() {
-    setFibonacci(new FibonacciIterative());
+  protected FibonacciIterative getFreshInstance() {
+    return new FibonacciIterative();
   }
 
   @Override

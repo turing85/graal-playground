@@ -2,14 +2,14 @@ package de.consol.dus.graal.numbercruncing.fibonacci;
 
 import org.openjdk.jmh.annotations.Param;
 
-public class FibonacciArrayJMH extends FibonacciJMH {
+public class FibonacciArrayListJMH extends FibonacciJMH {
 
-  @Param("268435456")
+  @Param("40")
   private int n = 0;
 
   @Override
-  protected FibonacciArray getFreshInstance() {
-    return new FibonacciArray();
+  protected FibonacciArrayList getFreshInstance() {
+    return new FibonacciArrayList();
   }
 
   @Override
