@@ -32,7 +32,7 @@
     </plugins>
   </build>
   <properties>
-    <jmh.version>1.4.1</jmh.version>
+    <jmh.version>1.21</jmh.version>
   </properties>
 </project>
 

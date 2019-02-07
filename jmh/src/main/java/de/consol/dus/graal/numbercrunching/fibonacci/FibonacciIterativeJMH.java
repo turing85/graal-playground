@@ -5,7 +5,7 @@ import org.openjdk.jmh.annotations.Param;
 public class FibonacciIterativeJMH extends FibonacciJMH {
 
   @Param("268435456")
-  private int n = 0;
+  private int nth = 0;
 
   @Override
   protected FibonacciIterative getFreshInstance() {
@@ -13,7 +13,7 @@ public class FibonacciIterativeJMH extends FibonacciJMH {
   }
 
   @Override
-  public int getN() {
-    return n;
+  public int getNth() {
+    return nth;
   }
 }

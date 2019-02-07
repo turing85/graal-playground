@@ -1,4 +1,4 @@
-package de.consol.dus.graal.numbercrunching.fibonacci;
+package de.consol.dus.graal.numbercrunching.primenumbers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,29 +8,28 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-@DisplayName("Test for Fibonacci calculation")
-public abstract class FibonacciTest {
+public abstract class PrimeNumberTest {
 
-  private Fibonacci underTest;
+  private PrimeNumber underTest;
 
   @BeforeEach
-  final void setup() {
-    this.underTest = getFreshInstance();
+  void setup() {
+    underTest = getFreshInstance();
   }
 
-  protected abstract Fibonacci getFreshInstance();
+  abstract protected PrimeNumber getFreshInstance();
 
   @Nested
   @DisplayName("Sanity test")
   class SanityTest {
 
-    @ParameterizedTest(name = "{0}th fibonacci should be {1}")
-    @CsvFileSource(resources = "/fibonacci/testValues.csv")
+    @ParameterizedTest(name = "{0}th prime should be {1}")
+    @CsvFileSource(resources = "/primenumbers/testValues.csv")
     void test_shouldReturnSecondArgument_whenCalledWithFirstArgument(int nth, long expected) {
       // Given: nothing
 
       // When:
-      long actual = underTest.calculateNthFibonacci(nth);
+      long actual = underTest.getNthPrime(nth);
 
       // Then:
       assertEquals(expected, actual);
