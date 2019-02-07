@@ -1,6 +1,5 @@
 package de.consol.dus.graal.numbercrunching.fibonacci;
 
-import de.consol.dus.graal.numbercrunching.fibonacci.Fibonacci;
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 
