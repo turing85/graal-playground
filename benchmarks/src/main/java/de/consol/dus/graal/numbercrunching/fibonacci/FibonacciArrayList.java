@@ -1,4 +1,4 @@
-package de.consol.dus.graal.numbercruncing.fibonacci;
+package de.consol.dus.graal.numbercrunching.fibonacci;
 
 import java.util.ArrayList;
 

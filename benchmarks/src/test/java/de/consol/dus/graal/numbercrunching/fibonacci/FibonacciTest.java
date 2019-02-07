@@ -2,7 +2,6 @@ package de.consol.dus.graal.numbercrunching.fibonacci;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import de.consol.dus.graal.numbercruncing.fibonacci.Fibonacci;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -25,7 +24,7 @@ public abstract class FibonacciTest {
     this.underTest = underTest;
   }
 
-  public Fibonacci getUnderTest() {
+  Fibonacci getUnderTest() {
     return underTest;
   }
 
