@@ -5,7 +5,7 @@ public class FibonacciArrayNative extends FibonacciNative {
     return 268435456;
   }
 
-  protected Fibonacci getFreshInstance() {
+  protected FibonacciArray getFreshInstance() {
     return new FibonacciArray();
   }
 
