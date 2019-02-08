@@ -1,10 +1,8 @@
 package de.consol.dus.graal.numbercrunching.fibonacci;
 
 public class FibonacciArrayNative extends FibonacciNative {
-  public int getNth() {
-    return 268435456;
-  }
 
+  @Override
   protected FibonacciArray getFreshInstance() {
     return new FibonacciArray();
   }

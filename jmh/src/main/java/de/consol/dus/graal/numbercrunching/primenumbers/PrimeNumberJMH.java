@@ -1,8 +1,12 @@
 package de.consol.dus.graal.numbercrunching.primenumbers;
 
 import de.consol.dus.graal.AbstractBenchmark;
+import org.openjdk.jmh.annotations.Param;
 
 public abstract class PrimeNumberJMH extends AbstractBenchmark {
+
+  @Param("500000")
+  private int nth = 0;
 
   private PrimeNumber primeNumber;
 
@@ -21,7 +25,9 @@ public abstract class PrimeNumberJMH extends AbstractBenchmark {
     primeNumber.getNthPrime(getNth());
   }
 
-  protected abstract PrimeNumber getFreshInstance();
+  public int getNth() {
+    return nth;
+  }
 
-  public abstract int getNth();
+  protected abstract PrimeNumber getFreshInstance();
 }
