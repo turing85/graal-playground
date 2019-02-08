@@ -18,7 +18,7 @@ public abstract class FibonacciJMH extends AbstractBenchmark {
 
   abstract protected Fibonacci getFreshInstance();
 
-  public abstract int getNth();
+  public abstract int getN();
 
   public final Fibonacci getFibonacci() {
     return fibonacci;
@@ -26,6 +26,6 @@ public abstract class FibonacciJMH extends AbstractBenchmark {
 
   @Override
   public final void execute() {
-    getFibonacci().calculateNthFibonacci(getNth());
+    getFibonacci().calculateNthFibonacci(getN());
   }
 }

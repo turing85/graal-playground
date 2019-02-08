@@ -31,6 +31,10 @@
       <artifactId>jmh-generator-annprocess</artifactId>
       <version>${jmh.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.graalvm.sdk</groupId>
+      <artifactId>graal-sdk</artifactId>
+    </dependency>
   </dependencies>
 
   <build>

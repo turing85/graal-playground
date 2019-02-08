@@ -6,6 +6,7 @@ import java.util.Random;
 import org.openjdk.jmh.annotations.Param;
 
 public class SortStringArrayJMH extends SortJMH {
+
   @Param("524288")
   private int size;
 

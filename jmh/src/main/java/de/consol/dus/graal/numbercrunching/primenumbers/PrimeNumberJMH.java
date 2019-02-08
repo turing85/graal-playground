@@ -6,7 +6,7 @@ import org.openjdk.jmh.annotations.Param;
 public abstract class PrimeNumberJMH extends AbstractBenchmark {
 
   @Param("500000")
-  private int nth = 0;
+  private int n = 0;
 
   private PrimeNumber primeNumber;
 
@@ -22,11 +22,11 @@ public abstract class PrimeNumberJMH extends AbstractBenchmark {
 
   @Override
   public void execute() {
-    primeNumber.getNthPrime(getNth());
+    primeNumber.getNthPrime(getN());
   }
 
-  public int getNth() {
-    return nth;
+  public int getN() {
+    return n;
   }
 
   protected abstract PrimeNumber getFreshInstance();

@@ -19,17 +19,17 @@ public class PrimeNumberArray implements PrimeNumber {
     long candidate = 5;
     while (primeCounter < n) {
       boolean isPrime = true;
-      int divisorIndex = 0;
+      int dividerIndex = 0;
       while (isPrime) {
-        long divisor = primes[divisorIndex];
-        if (divisor * divisor > candidate) {
+        long divider = primes[dividerIndex];
+        if (divider * divider > candidate) {
           break;
         }
 
-        if (candidate % divisor == 0) {
+        if (candidate % divider == 0) {
           isPrime = false;
         }
-        ++divisorIndex;
+        ++dividerIndex;
       }
       if (isPrime) {
         primes[primeCounter] = candidate;
