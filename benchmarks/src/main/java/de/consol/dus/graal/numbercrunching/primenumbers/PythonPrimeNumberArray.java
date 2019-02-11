@@ -1,11 +1,11 @@
-package de.consol.dus.graal.numbercrunching.fibonacci;
+package de.consol.dus.graal.numbercrunching.primenumbers;
 
 import java.io.IOException;
 import java.util.function.Function;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-class JsFibonacciIterative implements Fibonacci {
+public class PythonPrimeNumberArray implements PrimeNumber {
 
   private static Function<Integer, Number> function;
 
@@ -14,12 +14,12 @@ class JsFibonacciIterative implements Fibonacci {
       Context context = Context.create();
       Source jsSource = Source
           .newBuilder(
-              "js",
-              ClassLoader.getSystemResource("js/fibonacci.iterative.js"))
+              "python",
+              ClassLoader.getSystemResource("python/primenumbers_array.py"))
           .build();
       context.eval(jsSource);
       function = context
-          .getBindings("js")
+          .getBindings("python")
           .getMember("fibonacci")
           .as(Function.class);
     } catch (IOException e) {
@@ -28,7 +28,8 @@ class JsFibonacciIterative implements Fibonacci {
   }
 
   @Override
-  public long calculateNthFibonacci(int n) {
+  @SuppressWarnings("unchecked")
+  public long getNthPrime(int n) {
     return function.apply(n).longValue();
   }
 }

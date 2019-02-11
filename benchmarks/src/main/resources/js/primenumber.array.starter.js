@@ -1,5 +1,8 @@
-let n = process.argv.slice(2)[0]
-console.log(fibonacci(n))
+for (let run = 1; run <= 10; ++run) {
+  console.time('primenumber')
+  getNthPrime(500000)
+  console.timeEnd('primenumber')
+}
 
 function getNthPrime(n) {
   if (n === 1) {

@@ -1,5 +1,10 @@
-let n = process.argv.slice(2)[0]
-console.log(fibonacci(n))
+let times = []
+for (let run = 1; run <= 10; ++run) {
+  console.time('fibonacci')
+  fibonacci(40)
+  times.push(console.timeEnd('fibonacci'))
+}
+console.log(times)
 
 function fibonacci(n) {
   if (n <= 1) {

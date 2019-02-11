@@ -5,7 +5,7 @@ import java.util.function.Function;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-class JsFibonacciIterative implements Fibonacci {
+class JsFibonacciRecursive implements Fibonacci {
 
   private static Function<Integer, Number> function;
 
@@ -15,7 +15,7 @@ class JsFibonacciIterative implements Fibonacci {
       Source jsSource = Source
           .newBuilder(
               "js",
-              ClassLoader.getSystemResource("js/fibonacci.iterative.js"))
+              ClassLoader.getSystemResource("js/fibonacci.recursive.js"))
           .build();
       context.eval(jsSource);
       function = context
@@ -26,6 +26,7 @@ class JsFibonacciIterative implements Fibonacci {
       System.exit(42);
     }
   }
+
 
   @Override
   public long calculateNthFibonacci(int n) {

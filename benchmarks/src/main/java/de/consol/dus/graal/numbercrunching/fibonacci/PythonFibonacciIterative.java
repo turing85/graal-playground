@@ -5,7 +5,7 @@ import java.util.function.Function;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-class JsFibonacciIterative implements Fibonacci {
+class PythonFibonacciIterative implements Fibonacci {
 
   private static Function<Integer, Number> function;
 
@@ -14,12 +14,12 @@ class JsFibonacciIterative implements Fibonacci {
       Context context = Context.create();
       Source jsSource = Source
           .newBuilder(
-              "js",
-              ClassLoader.getSystemResource("js/fibonacci.iterative.js"))
+              "python",
+              ClassLoader.getSystemResource("python/fibonacci_iterative.py"))
           .build();
       context.eval(jsSource);
       function = context
-          .getBindings("js")
+          .getBindings("python")
           .getMember("fibonacci")
           .as(Function.class);
     } catch (IOException e) {
