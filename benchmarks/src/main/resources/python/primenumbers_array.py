@@ -9,6 +9,9 @@ def get_nth_prime(n):
   while found < n:
     is_prime = True
     for prime in primes:
+      if prime * prime > candidate:
+        break
+
       if candidate % prime == 0:
         is_prime = False
         break
