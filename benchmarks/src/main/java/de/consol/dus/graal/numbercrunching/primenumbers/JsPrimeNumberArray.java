@@ -15,7 +15,7 @@ public class JsPrimeNumberArray implements PrimeNumber {
       Source jsSource = Source
           .newBuilder(
               "js",
-              ClassLoader.getSystemResource("js/primenumber.array.js"))
+              ClassLoader.getSystemResource("js/primenumbers.array.js"))
           .build();
       context.eval(jsSource);
       function = context

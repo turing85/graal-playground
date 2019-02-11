@@ -6,6 +6,7 @@ import java.util.function.Function;
 import org.graalvm.polyglot.Context;
 import org.openjdk.jmh.annotations.Param;
 
+@SuppressWarnings("unchecked")
 public class JsSortIntArrayJMH extends SortJMH {
 
   private static final Function<int[], int[]> arraySorter =

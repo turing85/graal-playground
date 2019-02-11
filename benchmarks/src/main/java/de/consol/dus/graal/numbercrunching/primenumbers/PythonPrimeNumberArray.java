@@ -20,7 +20,7 @@ public class PythonPrimeNumberArray implements PrimeNumber {
       context.eval(jsSource);
       function = context
           .getBindings("python")
-          .getMember("fibonacci")
+          .getMember("get_nth_prime")
           .as(Function.class);
     } catch (IOException e) {
       System.exit(42);
