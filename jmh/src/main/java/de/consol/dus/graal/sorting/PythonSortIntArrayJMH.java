@@ -1,15 +1,14 @@
 package de.consol.dus.graal.sorting;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.function.Function;
 import org.graalvm.polyglot.Context;
 import org.openjdk.jmh.annotations.Param;
 
-public class JsSortIntArrayJMH extends SortJMH {
+public class PythonSortIntArrayJMH extends SortJMH {
 
   private static final Function<int[], int[]> arraySorter =
-      Context.create("js").eval("js", "(array) => array.sort").as(Function.class);
+      Context.create("python").eval("python", "lambda array : array.sort()").as(Function.class);
 
   @Param("8388608")
   private int size;

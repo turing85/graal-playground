@@ -1,6 +1,5 @@
 package de.consol.dus.graal.numbercrunching.fibonacci;
 
-import java.io.IOException;
 import org.openjdk.jmh.annotations.Param;
 
 public class JsFibonacciRecursiveJMH extends FibonacciJMH {
@@ -9,13 +8,8 @@ public class JsFibonacciRecursiveJMH extends FibonacciJMH {
   int n;
 
   @Override
-  protected JsFibonacciIRecursive getFreshInstance() {
-    try {
-      return new JsFibonacciIRecursive();
-    } catch (IOException e) {
-      e.printStackTrace(System.err);
-      return null;
-    }
+  protected JsFibonacciRecursive getFreshInstance() {
+    return new JsFibonacciRecursive();
   }
 
   @Override
