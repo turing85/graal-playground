@@ -1,16 +1,34 @@
 package de.consol.dus.graal.sorting;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.function.Function;
 import org.graalvm.polyglot.Context;
+import org.graalvm.polyglot.Source;
 import org.openjdk.jmh.annotations.Param;
 
 @SuppressWarnings("unchecked")
-public class PythonSortIntArrayJMH extends SortJMH {
+public class PythonSortIntArrayJMH /* extends SortJMH */ {
 
-  private static final Function<int[], int[]> arraySorter =
-      Context.create("python").eval("python", "lambda array : array.sort()").as(Function.class);
+  private static Function<int[], int[]> function;
 
+  static {
+    try {
+      Context context = Context.create();
+      Source jsSource = Source
+          .newBuilder(
+              "python",
+              ClassLoader.getSystemResource("python/sort_intarray.py"))
+          .build();
+      context.eval(jsSource);
+      function = context
+          .getBindings("python")
+          .getMember("sort")
+          .as(Function.class);
+    } catch (IOException e) {
+      System.exit(42);
+    }
+  }
   @Param("8388608")
   private int size;
 
@@ -21,7 +39,7 @@ public class PythonSortIntArrayJMH extends SortJMH {
     return size;
   }
 
-  @Override
+  // @Override
   public void setup() {
     final int n = getSize();
     array = new int[n];
@@ -43,14 +61,14 @@ public class PythonSortIntArrayJMH extends SortJMH {
     }
   }
 
-  @Override
+  // @Override
   public void tearDown() {
     array = null;
   }
 
-  @Override
+  // @Override
   @SuppressWarnings("unchecked")
   public void sort() {
-    arraySorter.apply(array);
+    function.apply(array);
   }
 }
