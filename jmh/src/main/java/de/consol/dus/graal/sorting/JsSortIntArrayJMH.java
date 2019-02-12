@@ -7,12 +7,13 @@ import org.graalvm.polyglot.Context;
 import org.openjdk.jmh.annotations.Param;
 
 @SuppressWarnings("unchecked")
-public class JsSortIntArrayJMH extends SortJMH {
+public class JsSortIntArrayJMH /* extends SortJMH */ {
 
   private static final Function<int[], int[]> arraySorter =
-      Context.create("js").eval("js", "(array) => array.sort").as(Function.class);
+      Context.create("js").eval("js", "(array) => array.sort()").as(Function.class);
 
-  @Param("8388608")
+
+  @Param("10")
   private int size;
 
   private int[] array;
@@ -22,7 +23,7 @@ public class JsSortIntArrayJMH extends SortJMH {
     return size;
   }
 
-  @Override
+  // @Override
   public void setup() {
     final int n = getSize();
     array = new int[n];
@@ -44,12 +45,13 @@ public class JsSortIntArrayJMH extends SortJMH {
     }
   }
 
-  @Override
+  // @Override
   public void tearDown() {
+    System.out.println(Arrays.toString(array));
     array = null;
   }
 
-  @Override
+  // @Override
   @SuppressWarnings("unchecked")
   public void sort() {
     arraySorter.apply(array);

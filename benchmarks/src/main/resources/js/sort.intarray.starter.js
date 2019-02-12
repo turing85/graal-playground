@@ -18,10 +18,10 @@ function swap(array, i, j) {
   array[j] = tmp
 }
 
-console.log('Preparing random array.')
-let shuffled = createShuffledArray(8388608)
-console.log('Preparation done, starting test.')
+for (let run = 1; run <= 10; ++run) {
+  let shuffled = createShuffledArray(8388608)
 
-console.time('sort')
-shuffled.sort()
-console.timeEnd('sort')
+  console.time('sort')
+  shuffled.sort()
+  console.timeEnd('sort')
+}

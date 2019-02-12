@@ -1,10 +1,8 @@
-let times = []
 for (let run = 1; run <= 10; ++run) {
   console.time('fibonacci')
   fibonacci(40)
-  times.push(console.timeEnd('fibonacci'))
+  console.timeEnd('fibonacci')
 }
-console.log(times)
 
 function fibonacci(n) {
   if (n <= 1) {
