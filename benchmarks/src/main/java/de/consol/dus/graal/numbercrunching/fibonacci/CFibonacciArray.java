@@ -2,19 +2,18 @@ package de.consol.dus.graal.numbercrunching.fibonacci;
 
 import java.io.IOException;
 import java.util.function.Function;
-import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-class JsFibonacciRecursive extends PolyglotFibonacci {
+public class CFibonacciArray extends PolyglotFibonacci {
 
-  private static Function<Integer, Number> function;
+  private static Function<Integer, Long> function;
 
   static {
     try {
-      Source source = getSource("js/fibonacci.recursive.js", "js");
+      Source source = getSource("c/fibonacci_array.bc", "llvm");
       getContext().eval(source);
       function = getContext()
-          .getBindings("js")
+          .getBindings("llvm")
           .getMember("fibonacci")
           .as(Function.class);
     } catch (IOException e) {
@@ -22,9 +21,8 @@ class JsFibonacciRecursive extends PolyglotFibonacci {
     }
   }
 
-
   @Override
   public long calculateNthFibonacci(int n) {
-    return function.apply(n).longValue();
+    return function.apply(n);
   }
 }

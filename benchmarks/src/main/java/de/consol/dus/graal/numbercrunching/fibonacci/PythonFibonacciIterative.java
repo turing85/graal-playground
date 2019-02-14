@@ -5,20 +5,15 @@ import java.util.function.Function;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-class PythonFibonacciIterative implements Fibonacci {
+class PythonFibonacciIterative extends PolyglotFibonacci {
 
   private static Function<Integer, Number> function;
 
   static {
     try {
-      Context context = Context.create();
-      Source jsSource = Source
-          .newBuilder(
-              "python",
-              ClassLoader.getSystemResource("python/fibonacci_iterative.py"))
-          .build();
-      context.eval(jsSource);
-      function = context
+      Source source = getSource("python/fibonacci_iterative.py", "python");
+      getContext().eval(source);
+      function = getContext()
           .getBindings("python")
           .getMember("fibonacci")
           .as(Function.class);

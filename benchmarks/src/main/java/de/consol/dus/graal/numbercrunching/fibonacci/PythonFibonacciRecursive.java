@@ -5,20 +5,15 @@ import java.util.function.Function;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-class PythonFibonacciRecursive implements Fibonacci {
+class PythonFibonacciRecursive extends PolyglotFibonacci {
 
   private static Function<Integer, Number> function;
 
   static {
     try {
-      Context context = Context.create();
-      Source jsSource = Source
-          .newBuilder(
-              "python",
-              ClassLoader.getSystemResource("python/fibonacci_recursive.py"))
-          .build();
-      context.eval(jsSource);
-      function = context
+      Source source = getSource("python/fibonacci_recursive.py", "python");
+      getContext().eval(source);
+      function = getContext()
           .getBindings("python")
           .getMember("fibonacci")
           .as(Function.class);
