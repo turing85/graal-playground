@@ -21,8 +21,8 @@ GraalVM. the native images are created within the `target` folder.
 ## Compile
 
 In order to compile and package the project, `JAVA_HOME` must be set to a valid
-GraalVM root dir with python support. Copmile and package the project by
-exeucting
+GraalVM root dir with python support. Compile and package the project by
+executing
 
     > mvn clean package
 
