@@ -51,6 +51,12 @@ benchmark parameters for `js`-files are hard-coded within the file. For `python`
 the benchmark parameter can pe passed as first command line argument, e.g.:
 
     > python fibonacci_recursive_starter.py 40
+
+## C tests
+In order to execute C code through Graal, we need to compile the code to
+bitcode. Some C/C++ compilers support comilation to bitcode, e.g.
+[`clang`][clang]
+
 ## Native Image build
 In order to create the native images, `GRAAL_HOME` must point to a valid graal
 installation directory. Build the native images by executing
@@ -64,3 +70,5 @@ You will find the native images in folder `native/target`.
 If you have questions or would like to contribute, contact me via 
 <a href="mailto:marco.bungart@consol.de">marco(dot)bungart(at)consol(dot)de</a>
 or <a href="https://twitter.com/turing85">Twitter</a>.
+
+[clang]: https://clang.llvm.org/

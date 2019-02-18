@@ -21,9 +21,8 @@ public class CFibonacciRecursive extends PolyglotFibonacci {
     }
   }
 
-
   @Override
   public long calculateNthFibonacci(int n) {
-    return function.apply(n).longValue();
+    return function.apply(n);
   }
 }
