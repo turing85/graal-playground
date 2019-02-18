@@ -55,7 +55,7 @@ the benchmark parameter can pe passed as first command line argument, e.g.:
 ## C tests
 In order to execute C code through Graal, we need to compile the code to
 bitcode. Some C/C++ compilers support comilation to bitcode, e.g.
-[`clang`][clang]
+[`clang`][clang]. 
 
 ## Native Image build
 In order to create the native images, `GRAAL_HOME` must point to a valid graal
@@ -63,7 +63,9 @@ installation directory. Build the native images by executing
 
     > native/scripts/nativeCompile.sh
 
-You will find the native images in folder `native/target`.
+You will find the native images in folder `native/target`. Native image
+compilation is not added to the maven build process on purpose since it takes
+quite some time.
 
 ## Contact Information 
 

@@ -4,6 +4,7 @@ CLANG=$(which clang)
 if [[ -z "$CLANG" ]]
 then
   echo "Could not find clang. Please make sure clang is on the \$PATH"
+  exit 42
 else
   cd src/main/c
 
