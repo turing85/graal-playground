@@ -21,8 +21,11 @@ public abstract class WordCountJMH extends AbstractBenchmark {
     if (wordCount == null) {
       StringBuilder builder = new StringBuilder();
       try (
-          BufferedInputStream is = new BufferedInputStream(ClassLoader.getSystemClassLoader()
-              .getResourceAsStream(pathToInput));
+          BufferedInputStream is =
+              new BufferedInputStream(
+                  ClassLoader
+                      .getSystemClassLoader()
+                      .getResourceAsStream(pathToInput));
           BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
         String line = reader.readLine();
         while (line != null) {

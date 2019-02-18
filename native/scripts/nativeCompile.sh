@@ -12,8 +12,8 @@ else
   else
     cd ../target
   fi
-  echo "#### compiling array-based fibonacci benchmark ####"
 
+  echo "#### compiling array-based fibonacci benchmark ####"
   $GRAAL_HOME/bin/native-image --no-server -cp ./dus.graal.native-1.0-SNAPSHOT.jar:../../benchmarks/target/dus.graal.benchmarks-1.0-SNAPSHOT.jar de.consol.dus.graal.numbercrunching.fibonacci.FibonacciArrayNative -O1 -da --static
 
   echo "#### compiling arraylist-based fibonacci benchmark ####"
@@ -35,8 +35,8 @@ else
   $GRAAL_HOME/bin/native-image --no-server -cp ./dus.graal.native-1.0-SNAPSHOT.jar:../../benchmarks/target/dus.graal.benchmarks-1.0-SNAPSHOT.jar de.consol.dus.graal.numbercrunching.streams.GraalExampleSimpleStreamNative -O1 -da --static
 
   echo "#### compiling word count stream benchmark ####"
-  $GRAAL_HOME/bin/native-image --no-server -cp ./dus.graal.native-1.0-SNAPSHOT.jar:../../benchmarks/target/dus.graal.benchmarks-1.0-SNAPSHOT.jar de.consol.dus.graal.numbercrunching.wordcount.WordCountStreamNative -O1 -da --static
+  $GRAAL_HOME/bin/native-image --no-server -cp ./dus.graal.native-1.0-SNAPSHOT.jar:../../benchmarks/target/dus.graal.benchmarks-1.0-SNAPSHOT.jar de.consol.dus.graal.numbercrunching.wordcount.WordCountStreamNative -O1 -da --static -H:IncludeResources='.*wordCount/.*\.txt$' -H:Log=registerResource
 
   echo "#### compiling word count iterative benchmark ####"
-  $GRAAL_HOME/bin/native-image --no-server -cp ./dus.graal.native-1.0-SNAPSHOT.jar:../../benchmarks/target/dus.graal.benchmarks-1.0-SNAPSHOT.jar de.consol.dus.graal.numbercrunching.wordcount.WordCountIterativeNative -O1 -da --static
+  $GRAAL_HOME/bin/native-image --no-server -cp ./dus.graal.native-1.0-SNAPSHOT.jar:../../benchmarks/target/dus.graal.benchmarks-1.0-SNAPSHOT.jar de.consol.dus.graal.numbercrunching.wordcount.WordCountIterativeNative -O1 -da --static -H:IncludeResources='.*wordCount/.*\.txt$' -H:Log=registerResource
 fi
