@@ -5,4 +5,5 @@ __pycache__/
 
 *.iml
 *.pyc
+*.bc
 dependency-reduced-pom.xml
