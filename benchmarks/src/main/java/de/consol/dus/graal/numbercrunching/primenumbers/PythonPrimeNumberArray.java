@@ -2,23 +2,17 @@ package de.consol.dus.graal.numbercrunching.primenumbers;
 
 import java.io.IOException;
 import java.util.function.Function;
-import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-public class PythonPrimeNumberArray implements PrimeNumber {
+public class PythonPrimeNumberArray extends PolyglotPrimeNumber {
 
   private static Function<Integer, Number> function;
 
   static {
     try {
-      Context context = Context.create();
-      Source jsSource = Source
-          .newBuilder(
-              "python",
-              ClassLoader.getSystemResource("python/primenumbers_array.py"))
-          .build();
-      context.eval(jsSource);
-      function = context
+      Source source = getSource("python/primenumbers_array.py", "python");
+      getContext().eval(source);
+      function = getContext()
           .getBindings("python")
           .getMember("get_nth_prime")
           .as(Function.class);
@@ -28,7 +22,6 @@ public class PythonPrimeNumberArray implements PrimeNumber {
   }
 
   @Override
-  @SuppressWarnings("unchecked")
   public long getNthPrime(int n) {
     return function.apply(n).longValue();
   }

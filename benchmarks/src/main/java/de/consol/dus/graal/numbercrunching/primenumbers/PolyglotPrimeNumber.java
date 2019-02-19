@@ -1,10 +1,10 @@
-package de.consol.dus.graal.numbercrunching.fibonacci;
+package de.consol.dus.graal.numbercrunching.primenumbers;
 
 import java.io.IOException;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-public abstract class PolyglotFibonacci implements Fibonacci {
+public abstract class PolyglotPrimeNumber implements PrimeNumber {
 
   private static final Context context = Context.newBuilder().allowAllAccess(true).build();
 
@@ -18,5 +18,4 @@ public abstract class PolyglotFibonacci implements Fibonacci {
         .cached(true)
         .build();
   }
-
 }

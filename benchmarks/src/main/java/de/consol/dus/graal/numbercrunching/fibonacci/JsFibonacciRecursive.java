@@ -2,7 +2,6 @@ package de.consol.dus.graal.numbercrunching.fibonacci;
 
 import java.io.IOException;
 import java.util.function.Function;
-import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
 class JsFibonacciRecursive extends PolyglotFibonacci {

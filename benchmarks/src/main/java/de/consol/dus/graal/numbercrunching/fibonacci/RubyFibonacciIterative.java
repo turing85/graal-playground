@@ -4,19 +4,19 @@ import java.io.IOException;
 import java.util.function.Function;
 import org.graalvm.polyglot.Source;
 
-class PythonFibonacciIterative extends PolyglotFibonacci {
+public class RubyFibonacciIterative extends PolyglotFibonacci{
 
   private static Function<Integer, Number> function;
 
   static {
     try {
-      Source source = getSource("python/fibonacci_iterative.py", "python");
+      Source source = getSource("ruby/fibonacci_iterative.rb", "ruby");
       getContext().eval(source);
       function = getContext()
-          .getBindings("python")
+          .getBindings("ruby")
           .getMember("fibonacci")
           .as(Function.class);
-    } catch (IOException e) {
+    } catch (IOException exception) {
       System.exit(42);
     }
   }

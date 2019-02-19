@@ -4,7 +4,6 @@ import de.consol.dus.graal.AbstractBenchmark;
 import java.util.stream.IntStream;
 import org.openjdk.jmh.annotations.Param;
 
-
 public class GraalExampleSimpleStream extends AbstractBenchmark {
 
   @Param("134217728")

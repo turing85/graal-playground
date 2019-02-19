@@ -1,20 +1,20 @@
-package de.consol.dus.graal.numbercrunching.fibonacci;
+package de.consol.dus.graal.numbercrunching.primenumbers;
 
 import java.io.IOException;
 import java.util.function.Function;
 import org.graalvm.polyglot.Source;
 
-class PythonFibonacciIterative extends PolyglotFibonacci {
+public class RubyPrimeNumberArray extends PolyglotPrimeNumber {
 
   private static Function<Integer, Number> function;
 
   static {
     try {
-      Source source = getSource("python/fibonacci_iterative.py", "python");
+      Source source = getSource("ruby/primenumbers_array.rb", "ruby");
       getContext().eval(source);
       function = getContext()
-          .getBindings("python")
-          .getMember("fibonacci")
+          .getBindings("ruby")
+          .getMember("get_nth_prime")
           .as(Function.class);
     } catch (IOException e) {
       System.exit(42);
@@ -22,7 +22,7 @@ class PythonFibonacciIterative extends PolyglotFibonacci {
   }
 
   @Override
-  public long calculateNthFibonacci(int n) {
+  public long getNthPrime(int n) {
     return function.apply(n).longValue();
   }
 }

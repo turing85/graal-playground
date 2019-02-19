@@ -2,23 +2,17 @@ package de.consol.dus.graal.numbercrunching.primenumbers;
 
 import java.io.IOException;
 import java.util.function.Function;
-import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 
-public class JsPrimeNumberArray implements PrimeNumber {
+public class JsPrimeNumberArray extends PolyglotPrimeNumber {
 
   private static Function<Integer, Number> function;
 
   static {
     try {
-      Context context = Context.create();
-      Source jsSource = Source
-          .newBuilder(
-              "js",
-              ClassLoader.getSystemResource("js/primenumbers.array.js"))
-          .build();
-      context.eval(jsSource);
-      function = context
+      Source source = getSource("js/primenumbers.array.js", "js");
+      getContext().eval(source);
+      function = getContext()
           .getBindings("js")
           .getMember("getNthPrime")
           .as(Function.class);
