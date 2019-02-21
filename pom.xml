@@ -15,6 +15,7 @@
     <module>benchmarks</module>
     <module>jmh</module>
     <module>native</module>
+    <module>interop</module>
   </modules>
 
   <properties>

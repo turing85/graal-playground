@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.Optional;
 
 public class User {
+
+  public static final String FMT = "User{name=%s, email=%s}";
+
   private String name;
   private String email;
   private Date creationDate;
@@ -16,11 +19,11 @@ public class User {
     return new User(name, email, creationDate);
   }
 
-  public User (String name, String email) {
+  public User(String name, String email) {
     this(name, email, new Date());
   }
 
-  public User(String name, String email, Date creationDate) {
+  private User(String name, String email, Date creationDate) {
     Optional.of(name).ifPresent(this::setName);
     Optional.of(email).ifPresent(this::setEmail);
     Optional.of(creationDate).ifPresent(this::setCreationDate);
@@ -48,5 +51,10 @@ public class User {
 
   private void setCreationDate(Date creationDate) {
     this.creationDate = creationDate;
+  }
+
+  @Override
+  public String toString() {
+    return String.format(FMT, this.getName(), this.getEmail());
   }
 }
